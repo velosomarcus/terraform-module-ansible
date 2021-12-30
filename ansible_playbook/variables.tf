@@ -19,8 +19,20 @@ variable remote_user {
 }
 
 variable playbook {
-  description = "Path to playbook file."
+  description = "Path to playbook file (required)."
   type        = string
+}
+
+variable galaxy_role_file {
+  description = "Path to the Ansible Galaxy requirements.yml file (required)."
+  type        = string
+  default     = ""
+}
+
+variable galaxy_roles_path {
+  description = "Path to the directory where Ansible Galaxy roles must be installed."
+  type        = string
+  default     = "roles"
 }
 
 variable ansible_ssh_retries {
