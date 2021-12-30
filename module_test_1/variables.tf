@@ -26,17 +26,11 @@ variable playbook {
 variable ansible_ssh_retries {
   description = "Ansible variable to retry SSH connection. This is important to wait SSH connections in new instances."
   type        = number
-  default     = 30
+  default     = 20
 }
 
 variable ansible_host_key_checking {
   description = "Ansible variable to host key checking"
   type        = bool
   default     = false
-}
-
-variable ansible_playbook_path {
-  description = "ansible-playbook command path"
-  type        = string
-  default     = "ansible-playbook"
 }
