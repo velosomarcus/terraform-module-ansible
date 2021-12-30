@@ -1,38 +1,14 @@
-resource "random_id" "default" {
-  byte_length = 8
-}
-
-data "archive_file" "default" {
-  type        = "zip"
-  source_dir  = dirname(var.playbook)
-  output_path = "${path.module}/${random_id.default.hex}.zip"
-}
-
-resource "null_resource" "provisioner" {
-  count = signum(length(var.playbook)) == 1 ? 1 : 0
-
-  depends_on = [data.archive_file.default]
-
+resource "null_resource" "ansible-playbook" {
   triggers = {
-    signature = data.archive_file.default.output_md5
-    command   = "ansible-playbook ${var.dry_run ? "--check --diff" : ""} ${join(" ", compact(var.arguments))} ${length(compact(var.envs)) > 0 ? "-e" : ""} ${join(" -e ", compact(var.envs))} ${var.playbook}"
+    trigger = var.trigger
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook ${var.dry_run ? "--check --diff" : ""} ${join(" ", compact(var.arguments))} ${length(compact(var.envs)) > 0 ? "-e" : ""} ${join(" -e ", compact(var.envs))} ${var.playbook}"
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-resource "null_resource" "cleanup" {
-  triggers = {
-    default = random_id.default.hex
-  }
-
-  provisioner "local-exec" {
-    command = "rm -f ${data.archive_file.default.output_path}"
+    command = <<EOT
+      export ANSIBLE_SSH_RETRIES=${var.ansible_ssh_retries}
+      export ANSIBLE_HOST_KEY_CHECKING=${var.ansible_host_key_checking}
+      export ANSIBLE_FORCE_COLOR=true
+      ${var.ansible_playbook_path} -i '${var.remote_host},' --private-key ${var.private_key} -u ${var.remote_user} -b ${var.playbook}
+    EOT
   }
 }
