@@ -52,3 +52,9 @@ variable extra_vars {
   type        = string
   default     = ""
 }
+
+variable vault_pass_file {
+  description = "Optional - The path of a file containing the password used by Ansible Vault."
+  type = string
+  default = ""
+}
