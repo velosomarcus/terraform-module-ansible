@@ -17,7 +17,7 @@ module "ansible-playbook" {
   # insert the required variables here
   playbook = "./ansible/playbook.yml"  # Your playbook file (full path)
   galaxy_role_file  = "./ansible/requirements.txt"  # Optional - Your ansible galaxy requirements file (full path)
-  galaxy_roles_path = "./ansible/roles"  # Optional - A folder to download the ansible galaxy roles
+  galaxy_roles_path = "./ansible/roles"  # Optional - The path to the directory where Ansible Galaxy roles must be installed
   private_key = "./ssh_keys/id_rsa"  # Your ssh private key to access the remote machines (full path)
   remote_host = "aws_instance.<your-server-name>.public_ip"  # The ip address of the remote machine
   remote_user	= "ubuntu"  # The user name to access the remote machine
