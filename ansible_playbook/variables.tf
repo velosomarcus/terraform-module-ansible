@@ -1,5 +1,5 @@
 variable remote_host {
-  description = "Remote host IP or FQDN, for example, instance private IP."
+  description = "The ip or fqdn of the remote machine."
   type        = string
 }
 
@@ -9,40 +9,46 @@ variable trigger {
 }
 
 variable private_key {
-  description = "Path to SSH private key file."
+  description = "Your ssh private key to access the remote machines (full path)."
   type        = string
 }
 
 variable remote_user {
-  description = "The remote user name."
+  description = "The user name to access the remote machine."
   type        = string
 }
 
 variable playbook {
-  description = "Path to playbook file (required)."
+  description = "Your playbook file (full path)."
   type        = string
 }
 
 variable galaxy_role_file {
-  description = "Path to the Ansible Galaxy requirements.yml file (required)."
+  description = "Optional - Your ansible galaxy requirements file (full path)."
   type        = string
   default     = ""
 }
 
 variable galaxy_roles_path {
-  description = "Path to the directory where Ansible Galaxy roles must be installed."
+  description = "The path to the directory where Ansible Galaxy roles must be installed."
   type        = string
   default     = "roles"
 }
 
 variable ansible_ssh_retries {
-  description = "Ansible variable to retry SSH connection. This is important to wait SSH connections in new instances."
+  description = "Retry failed ssh executions. This can be helpful if there are transient network issues or when creating new aws instances."
   type        = number
   default     = 20
 }
 
 variable ansible_host_key_checking {
-  description = "Ansible variable to host key checking"
+  description = "Optional - Ansible enables host key checking by default. Set this to false if you want to avoid host key checking by the underlying tools Ansible uses to connect to the host."
   type        = bool
   default     = false
+}
+
+variable extra_vars {
+  description = "Pass additional variables to the playbook."
+  type        = string
+  default     = ""
 }

@@ -21,6 +21,7 @@ module "ansible-playbook" {
   private_key = "./ssh_keys/id_rsa"  # Your ssh private key to access the remote machines (full path)
   remote_host = "aws_instance.<your-server-name>.public_ip"  # The ip address of the remote machine
   remote_user	= "ubuntu"  # The user name to access the remote machine
+  extra_vars = "var_1='some value' var_2=other_value var_3=8080"  # Optional - Pass additional variables to the playbook
   trigger = aws_instance.<your-server-name>.id
 }
 ```
