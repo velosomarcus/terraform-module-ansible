@@ -10,7 +10,7 @@ resource "null_resource" "ansible-playbook" {
   }
 
   provisioner "local-exec" {
-    command = ansible_galaxy_command
+    command = local.ansible_galaxy_command
   }
 
   provisioner "local-exec" {
