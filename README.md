@@ -1,4 +1,4 @@
-# Terraform Module for running Ansible Playbooks
+'# Terraform Module for running Ansible Playbooks
 
 This [Terraform](https://www.terraform.io) module runs your [Ansible](https://www.ansible.com) playbook on your remote machine.
 If you provide the *galaxy_role_file* variable it also runs the Ansible Galaxy command to download and install your dependency roles.
@@ -21,7 +21,7 @@ module "ansible-playbook" {
   private_key = "./ssh_keys/id_rsa"  # Your ssh private key to access the remote machines (full path)
   remote_host = "aws_instance.<your-server-name>.public_ip"  # The ip address of the remote machine
   remote_user	= "ubuntu"  # The user name to access the remote machine
-  extra_vars = "var_1='some value' var_2=other_value var_3=8080"  # Optional - Pass additional variables to the playbook
+  extra_vars = "'var_1=some_value' var_2=8080'"  # Optional - Pass additional variables to the playbook
   vault_pass_file = "./ansible/pass.txt"  # "Optional - The path of a file containing the password used by Ansible Vault (full path)
   trigger = aws_instance.<your-server-name>.id
 }
