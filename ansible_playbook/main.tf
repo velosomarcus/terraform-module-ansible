@@ -18,7 +18,7 @@ resource "null_resource" "ansible-playbook" {
       export ANSIBLE_SSH_RETRIES=${var.ansible_ssh_retries}
       export ANSIBLE_HOST_KEY_CHECKING=${var.ansible_host_key_checking}
       export ANSIBLE_FORCE_COLOR=true
-      ansible-playbook -i '${var.remote_host},' --private-key ${var.private_key} -u ${var.remote_user} -b ${var.playbook} ${local.ansible_playbook_extra_vars} ${local.ansible_playbook_vault_pass}
+      ansible-playbook -i '${var.remote_host},' --private-key ${var.private_key} -u ${var.remote_user_name} -b ${var.playbook} ${local.ansible_playbook_extra_vars} ${local.ansible_playbook_vault_pass}
     EOT
   }
 }

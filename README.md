@@ -20,7 +20,7 @@ module "ansible-playbook" {
   galaxy_roles_path = "./ansible/roles"  # Optional - The path to the directory where Ansible Galaxy roles must be installed (full path)
   private_key = "./ssh_keys/id_rsa"  # Your ssh private key to access the remote machines (full path)
   remote_host = "aws_instance.<your-server-name>.public_ip"  # The ip address of the remote machine
-  remote_user	= "ubuntu"  # The user name to access the remote machine
+  remote_user_name = "ubuntu"  # The user name to access the remote machine
   extra_vars = "'var_1=some_value' var_2=8080'"  # Optional - Pass additional variables to the playbook
   vault_pass_file = "./ansible/pass.txt"  # "Optional - The path of a file containing the password used by Ansible Vault (full path)
   trigger = aws_instance.<your-server-name>.id

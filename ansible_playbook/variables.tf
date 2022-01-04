@@ -13,7 +13,7 @@ variable private_key {
   type        = string
 }
 
-variable remote_user {
+variable remote_user_name {
   description = "The user name to access the remote machine."
   type        = string
 }
