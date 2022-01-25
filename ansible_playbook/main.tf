@@ -1,5 +1,5 @@
 locals {
-  ansible_galaxy_command = var.galaxy_role_file != "" ? "ANSIBLE_FORCE_COLOR=true ansible-galaxy install --role-file ${var.galaxy_role_file} --roles-path ${var.galaxy_roles_path} --force --verbose" : ""
+  ansible_galaxy_command      = var.galaxy_role_file != "" ? "ANSIBLE_FORCE_COLOR=true ansible-galaxy install --role-file ${var.galaxy_role_file} --roles-path ${var.galaxy_roles_path} --force --verbose" : ""
   ansible_playbook_extra_vars = var.extra_vars != "" ? "-e ${var.extra_vars}" : ""
   ansible_playbook_vault_pass = var.vault_pass_file != "" ? "--vault-pass-file '${var.vault_pass_file}'" : ""
 }
