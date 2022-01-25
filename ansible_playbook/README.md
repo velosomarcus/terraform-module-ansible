@@ -1,4 +1,4 @@
-'# Terraform Module for running Ansible Playbooks
+# Terraform Module for running Ansible Playbooks
 
 This [Terraform](https://www.terraform.io) module runs your [Ansible](https://www.ansible.com) playbook on your remote machine.
 If you provide the *galaxy_role_file* variable it also runs the Ansible Galaxy command to download and install your dependency roles.
