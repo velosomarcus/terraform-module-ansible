@@ -14,7 +14,7 @@ it simply connects to them via SSH for Linux and Unix hosts and Windows Remote M
 ```bash
 module "ansible-playbook" {
   source  = "github.com/velosomarcus/terraform-module-ansible//ansible_playbook?ref=master"
-  # insert the required variables here
+  # insert the required variables here - see variables.tf file
   playbook = "./ansible/playbook.yml"  # Your playbook file (full path)
   galaxy_role_file  = "./ansible/requirements.txt"  # Optional - Your ansible galaxy requirements file (full path)
   galaxy_roles_path = "./ansible/roles"  # Optional - The path to the directory where Ansible Galaxy roles must be installed (full path)
